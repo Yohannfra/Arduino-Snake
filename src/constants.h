@@ -1,9 +1,9 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 
-#define PIN_CLK_MATRIX (8)
-#define PIN_CS_MATRIX (9)
-#define PIN_DIN_MATRIX (10)
+#define PIN_CLK_MATRIX (5)
+#define PIN_CS_MATRIX (6)
+#define PIN_DIN_MATRIX (7)
 
 #define INITIAL_SNAKE_SIZE (1)
 #define INITIAL_SNAKE_X (0)
@@ -11,10 +11,10 @@
 
 #define GRID_SIZE (8)
 
-#define PIN_BUTTON_UP (1)
-#define PIN_BUTTON_DOWN (2)
-#define PIN_BUTTON_LEFT (3)
-#define PIN_BUTTON_RIGHT (4)
+#define PIN_BUTTON_UP (9)
+#define PIN_BUTTON_DOWN (10)
+#define PIN_BUTTON_LEFT (11)
+#define PIN_BUTTON_RIGHT (8)
 
 typedef enum {
     UP,

@@ -1,7 +1,7 @@
 #include "Game.hpp"
 #include <Arduino.h>
 
-Game::Game()
+Game::Game() : _ledmatrix(PIN_CLK_MATRIX, PIN_CS_MATRIX, PIN_DIN_MATRIX)
 {
 
 }
@@ -17,34 +17,23 @@ void Game::reset()
 
 void Game::applyPositionsToGrid()
 {
-    /* int snakeX = _snake.getX(); */
-    /* int snakeY = _snake.getY(); */
-
-    /* int AppleX = _apple.getX(); */
-    /* int AppleY = _apple.getY(); */
+    snake_part_t  *snakeBody = _snake.getBody();
+    unsigned int snakeSize = _snake.getSize();
+    int AppleX = _apple.getX();
+    int AppleY = _apple.getY();
 
     for (int i = 0; i < 8; i++) {
-        _grid[i] = 0b00000000;
-        /* if (snakeX] == i) */
-
+        _grid[i] = (0b00000001 | 1) << i;
     }
-
-
-
 }
 
 void Game::start()
 {
     while (1) {
+        _snake.setDirection(_controller.getEvent());
         _snake.move();
         applyPositionsToGrid();
         _ledmatrix.displayGrid(_grid);
-
         delay(250);
     }
-}
-
-void Game::updateEvents()
-{
-    _snake.setDirection(_controller.getEvent());
 }

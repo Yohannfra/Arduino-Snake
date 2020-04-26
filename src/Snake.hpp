@@ -13,16 +13,16 @@ class Snake {
         Snake();
         void reset();
         void move();
-        int getX() const;
-        int getY() const;
+        const snake_part_t *getBody() const;
         void setDirection(directions_e newDirection);
         void grow();
+        bool eatsItself() const;
+        unsigned int getSize() const;
 
     private:
         snake_part_t  _body[GRID_SIZE * GRID_SIZE];
         unsigned int _size;
         directions_e _direction;
-        int applyNextPos(snake_part_t *part);
 };
 
 #endif // SNAKE_HPP

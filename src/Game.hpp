@@ -13,7 +13,6 @@ class Game {
 
     private:
         void applyPositionsToGrid();
-        void updateEvents();
         void reset();
         Snake _snake;
         Apple _apple;

@@ -2,7 +2,7 @@
 
 Snake::Snake()
 {
-
+    reset();
 }
 
 void Snake::reset()
@@ -13,49 +13,24 @@ void Snake::reset()
     _direction = RIGHT;
 }
 
-int Snake::applyNextPos(snake_part_t *part)
-{
-    return 9;
-}
-
 void Snake::move()
 {
-    directions_e lastNodeDirection = NONE;
+    int lastx;
+    int lasty;
 
-    for (int i = 0; i < _size; i++) {
-        if (lastNodeDirection == NONE) { // snake head
-            _body[i].x += 1;
-
+    for (unsigned int i = 0; i < _size; i++) {
+        if (i == 0) { // snake head
+            _body[i].x += (_direction == RIGHT) ? 1 :
+                                (_direction == LEFT) ? -1 : 0;
+            _body[i].y += (_direction == DOWN) ? 1 :
+                                    (_direction == UP) ? -1 : 0;
+        } else { // the rest of the body
+            _body[i].x = lastx;
+            _body[i].y = lasty;
         }
-
-
-        /* switch (_direction) { */
-        /*     case RIGHT: */
-        /*         _head.x += 1; */
-        /*         break; */
-        /*     case LEFT: */
-        /*         _head.x -= 1; */
-        /*         break; */
-        /*     case UP: */
-        /*         _head.y -= 1; */
-        /*         break; */
-        /*     case DOWN: */
-        /*         _head.y += 1; */
-        /*         break; */
-        /*     default: */
-        /*         break; */
-        /* } */
+        lastx = _body[i].x;
+        lasty = _body[i].y;
     }
-}
-
-int Snake::getX() const
-{
-    return _body[0].x;
-}
-
-int Snake::getY() const
-{
-    return _body[0].y;
 }
 
 void Snake::setDirection(directions_e newDirection)
@@ -66,5 +41,28 @@ void Snake::setDirection(directions_e newDirection)
 
 void Snake::grow()
 {
-    // TODO
+    _size += 1;
+    if (_size == (GRID_SIZE * GRID_SIZE)) {
+        // win annimation
+        // reset game
+    }
+}
+
+bool Snake::eatsItself() const
+{
+    for (unsigned int i = 0; i < _size; i++) {
+        if (i > 0 && _body[i].x == _body[0].x && _body[i].y == _body[0].y)
+            return true;
+    }
+    return false;
+}
+
+const snake_part_t *Snake::getBody() const
+{
+    return _body;
+}
+
+unsigned int Snake::getSize() const
+{
+    return _size;
 }
