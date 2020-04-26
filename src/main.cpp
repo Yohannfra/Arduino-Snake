@@ -1,6 +1,6 @@
-#include <Arduino.h>
 #include <time.h>
 #include "Game.hpp"
+#include <Arduino.h>
 
 void setup()
 {

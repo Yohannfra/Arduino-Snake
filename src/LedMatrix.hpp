@@ -16,6 +16,7 @@ class LedMatrix {
         LedMatrix() = default;
         void turn_light_on_arrow_style(int color); // color 1 red : 2 green
         void setAllMatrix(int value);
+        void displayGrid(const int grid[8]);
 };
 
 #endif

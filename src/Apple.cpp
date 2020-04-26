@@ -3,7 +3,7 @@
 
 Apple::Apple()
 {
-
+    changePosition();
 }
 
 void Apple::changePosition()

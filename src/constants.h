@@ -13,14 +13,15 @@
 
 #define PIN_BUTTON_UP (1)
 #define PIN_BUTTON_DOWN (2)
-#define PIN_BUTTON_MATRIX (3)
+#define PIN_BUTTON_LEFT (3)
 #define PIN_BUTTON_RIGHT (4)
 
 typedef enum {
     UP,
     DOWN,
     LEFT,
-    RIGHT
+    RIGHT,
+    NONE
 } directions_e;
 
 #endif // CONSTANTS_HPP

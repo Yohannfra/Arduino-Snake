@@ -12,6 +12,7 @@ class Game {
         void start();
 
     private:
+        void applyPositionsToGrid();
         void updateEvents();
         void reset();
         Snake _snake;
