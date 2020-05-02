@@ -45,10 +45,6 @@ void LedMatrix::setAllMatrix(int value)
 
 void LedMatrix::displayGrid(const int grid[8])
 {
-    int l = 0;
-
-    for (int i = 1; i <= 8; i++) {
-        Write(i, grid[l]);
-        l++;
-    }
+    for (int i = 1; i <= 8; i++)
+        Write(i, grid[i - 1]);
 }

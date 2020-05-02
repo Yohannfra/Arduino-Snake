@@ -10,26 +10,31 @@ void Snake::reset()
     _body[0].x = INITIAL_SNAKE_X;
     _body[0].y = INITIAL_SNAKE_Y;
     _size = INITIAL_SNAKE_SIZE;
-    _direction = RIGHT;
+    _direction = NONE;
 }
 
 void Snake::move()
 {
-    int lastx;
-    int lasty;
+    snake_part_t last;
+    snake_part_t tmp;
 
     for (unsigned int i = 0; i < _size; i++) {
         if (i == 0) { // snake head
+            last.x = _body[i].x;
+            last.y = _body[i].y;
+
             _body[i].x += (_direction == RIGHT) ? 1 :
                                 (_direction == LEFT) ? -1 : 0;
             _body[i].y += (_direction == DOWN) ? 1 :
                                     (_direction == UP) ? -1 : 0;
         } else { // the rest of the body
-            _body[i].x = lastx;
-            _body[i].y = lasty;
+            tmp.x = _body[i].x;
+            tmp.y = _body[i].y;
+            _body[i].x = last.x;
+            _body[i].y = last.y;
+            last.x = tmp.x;
+            last.y = tmp.y;
         }
-        lastx = _body[i].x;
-        lasty = _body[i].y;
     }
 }
 
