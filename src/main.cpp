@@ -4,7 +4,6 @@
 
 void setup()
 {
-    srand(time(NULL));
     Game g;
     g.start();
 }

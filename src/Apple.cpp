@@ -8,8 +8,8 @@ Apple::Apple()
 
 void Apple::changePosition()
 {
-    _x = rand() % (GRID_SIZE + 1);
-    _y = rand() % (GRID_SIZE + 1);
+    _x = rand() % (GRID_SIZE);
+    _y = rand() % (GRID_SIZE);
 }
 
 int Apple::getX() const

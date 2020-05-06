@@ -27,6 +27,14 @@ void Snake::move()
                                 (_direction == LEFT) ? -1 : 0;
             _body[i].y += (_direction == DOWN) ? 1 :
                                     (_direction == UP) ? -1 : 0;
+            if (_body[i].x == -1)
+                _body[i].x = GRID_SIZE - 1;
+            if (_body[i].x == GRID_SIZE)
+                _body[i].x = 0;
+            if (_body[i].y == -1)
+                _body[i].y = GRID_SIZE - 1;
+            if (_body[i].y == GRID_SIZE)
+                _body[i].y = 0;
         } else { // the rest of the body
             tmp.x = _body[i].x;
             tmp.y = _body[i].y;
@@ -40,7 +48,13 @@ void Snake::move()
 
 void Snake::setDirection(directions_e newDirection)
 {
-    if (newDirection != NONE)
+    if (newDirection == NONE)
+        return;
+    if ((newDirection == LEFT && _direction == RIGHT) ||
+        (newDirection == RIGHT && _direction == LEFT) ||
+        (newDirection == UP && _direction == DOWN) ||
+        (newDirection == DOWN && _direction == UP))
+        return;
         _direction = newDirection;
 }
 
@@ -55,8 +69,10 @@ void Snake::grow()
 
 bool Snake::eatsItself() const
 {
-    for (unsigned int i = 0; i < _size; i++) {
-        if (i > 0 && _body[i].x == _body[0].x && _body[i].y == _body[0].y)
+    snake_part_t head = _body[0];
+
+    for (unsigned int i = 1; i < _size; i++) {
+        if (_body[i].x == head.x && _body[i].y == head.y)
             return true;
     }
     return false;
