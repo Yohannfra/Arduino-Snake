@@ -14,6 +14,7 @@ class Game {
     private:
         void applyPositionsToGrid();
         void reset();
+        void changeApplePosition();
         Snake _snake;
         Apple _apple;
         LedMatrix _ledmatrix;

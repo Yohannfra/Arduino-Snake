@@ -61,10 +61,6 @@ void Snake::setDirection(directions_e newDirection)
 void Snake::grow()
 {
     _size += 1;
-    if (_size == (GRID_SIZE * GRID_SIZE)) {
-        // win annimation
-        // reset game
-    }
 }
 
 bool Snake::eatsItself() const
@@ -86,4 +82,13 @@ const snake_part_t *Snake::getBody() const
 unsigned int Snake::getSize() const
 {
     return _size;
+}
+
+bool Snake::isOnSnakeBody(int x, int y) const
+{
+    for (unsigned int i = 0; i < _size; i++) {
+        if (x == _body[i].x && y == _body[i].y)
+            return true;
+    }
+    return false;
 }

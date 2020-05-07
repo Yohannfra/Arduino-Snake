@@ -18,6 +18,7 @@ class Snake {
         void grow();
         bool eatsItself() const;
         unsigned int getSize() const;
+        bool isOnSnakeBody(int x, int y) const;
 
     private:
         snake_part_t  _body[GRID_SIZE * GRID_SIZE];
