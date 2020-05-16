@@ -11,10 +11,10 @@
 
 #define GRID_SIZE (8)
 
-#define PIN_BUTTON_RIGHT (8)
-#define PIN_BUTTON_UP (9)
-#define PIN_BUTTON_DOWN (10)
-#define PIN_BUTTON_LEFT (11)
+#define PIN_BUTTON_RIGHT (9)
+#define PIN_BUTTON_UP (11)
+#define PIN_BUTTON_DOWN (8)
+#define PIN_BUTTON_LEFT (10)
 
 typedef enum {
     UP,
